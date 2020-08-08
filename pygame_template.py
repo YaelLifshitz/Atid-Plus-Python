@@ -8,6 +8,7 @@ I did some changes so it can fit perfectly to my students and posted it on my gi
 '''
 import pygame
 import random
+import os
 
 WIDTH = 360
 HEIGHT = 480
