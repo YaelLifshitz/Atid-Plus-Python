@@ -30,6 +30,9 @@ clock = pygame.time.Clock()
 # adding an image as background
 img_background = pygame.image.load(os.path.join(img_folder, 'the image name.jpg')).convert()
 screen.blit(img_background, (0, 0)) # loading the image to coordinates (0,0)
+#if we want a color as a background we will write the two above instead
+#screen.fill(BLACK)
+#pygame.display.flip()
 
 # in order to update all the sprites we have in the game it is important to put them all in a list
 all_sprites = pygame.sprite.Group()
