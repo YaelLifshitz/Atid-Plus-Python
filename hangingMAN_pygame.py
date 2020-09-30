@@ -72,7 +72,7 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-myfont = pygame.font.SysFont("monospace", 16)
+font = pygame.font.SysFont("monospace", 16)
 
 # initialize pygame and create window
 pygame.init()
@@ -105,8 +105,18 @@ while running:
     screen.fill(BLACK)
     all_sprites.draw(screen)
     # *after* drawing everything, flip the display
-    hangingManDraw_0 = myfont.render("_________\n|       |\n|\n|\n|\n|\n|\n", 1, (0, 0, 0))
-    screen.blit(hangingManDraw_0, (5, 10))
+    hangingManDraw_0 = font.render("_________\n|       |\n|\n|\n|\n|\n|\n", True,  GREEN, BLUE)
+    # create a rectangular object for the
+    # text surface object
+    textRect = hangingManDraw_0.get_rect()
+
+    # set the center of the rectangular object.
+    textRect.center = (WIDTH // 2, HEIGHT // 2)
+    # copying the text surface object
+    # to the display surface object
+    # at the center coordinate.
+    screen.blit(hangingManDraw_0, textRect)
+
     # life score bord
    # lifetext = myfont.render("life {0}".format(life_score), 1, (0, 0, 0))
     #creen.blit(lifetext, (5, 30))

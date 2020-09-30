@@ -103,80 +103,87 @@ guess = []
 for i in range(len(word)):
         print("_", end=' ')
         guess.append('_')
-
-for i in range(len(word)):
-    right_letter = 0 #a flag to know if the letter is correct
-    while right_letter == 0: #as long as the letter is not correct
-        letter = input("\n press a letter: ") #asking the user to choose a letter
-        if letter == word[i]: #checking if the letter is correct
-            guess[i] = letter #if it is correct we save it to the guess user list
-            for j in range(len(guess)): # then we print out the list with his right answers
-                print(guess[j], end=' ') #the end is to make sure we the line won't drop  everytime we perform the print
-            right_letter = 1 #changing the flag to know the answer was correct and we can move on to the next guess
-
-        else:
-            print("Wrong letter try again!")
-            right_letter = 0
-            bad_points += 1
-            if bad_points == 1:
-                print("_________")
-                print("|       |")
-                print("|       0")
-                print("|           ")
-                print("|")
-                print("|")
-                print("|")
-            elif bad_points == 2:
-                print("_________")
-                print("|       |")
-                print("|       0")
-                print("|       |   ")
-                print("|")
-                print("|")
-                print("|")
-            elif bad_points == 3:
-                print("_________")
-                print("|       |")
-                print("|       0")
-                print("|       | \ ")
-                print("|")
-                print("|")
-                print("|")
-            elif bad_points == 4:
-                print("_________")
-                print("|       |")
-                print("|       0")
-                print("|     / | \ ")
-                print("|")
-                print("|")
-                print("|")
-            elif bad_points == 5:
-                print("_________")
-                print("|       |")
-                print("|       0")
-                print("|     / | \ ")
-                print("|        \ ")
-                print("|")
-                print("|")
-            else:
-                print("GAME OVER!!!")
-                print("_________")
-                print("|       |")
-                print("|       0")
-                print("|     / | \ ")
-                print("|      / \ ")
-                print("|")
-                print("|")
-                print("you lost!!")
-                print("the word was: ", end='')
-                Print("GAME IS OVER!!!!")
-                for m in range(len(word)):
-                    print(word[m], end='')
-        if bad_points > 5:
+word_completed = 0#indicates if the word completed if the nuber equals to the word length
+right_letter = 0 #indicates how many letters were guessed correctly
+already_chosen_letter = 0 #indicates if a correct letter was chosen more then once
+while word_completed < len(word): #as long as the word wasn't completed
+    right_letter = 0
+    letter = input("\n press a letter: ") #asking the user to choose a letter
+    for i in range(len(word)):
+        if letter == guess[i]:
+            print("You  have already chose this letter and you were correct. Now Please choose a different letter ")
+            already_chosen_letter = 1
             break
+        if letter == word[i]:
+            guess[i] = letter #if it is correct we save it to the guess user list
+            word_completed += 1 #changing the flag to know the answer was correct and we can move on to the next guess
+            right_letter = 1
+    for i in range(len(word)):
+        print(guess[i], end=' ') #the end is to make sure the line won't drop  every time we perform the print
+    if already_chosen_letter == 1:
+        already_chosen_letter = 0
+        continue
+    if right_letter == 0:
+        print("Wrong letter try again!")
+        bad_points += 1
+    if bad_points == 0:
+        pass
+    elif bad_points == 1:
+        print("\n_________")
+        print("|       |")
+        print("|       0")
+        print("|           ")
+        print("|")
+        print("|")
+        print("|")
+    elif bad_points == 2:
+        print("\n_________")
+        print("|       |")
+        print("|       0")
+        print("|       |   ")
+        print("|")
+        print("|")
+        print("|")
+    elif bad_points == 3:
+        print("\n_________")
+        print("|       |")
+        print("|       0")
+        print("|       | \ ")
+        print("|")
+        print("|")
+        print("|")
+    elif bad_points == 4:
+        print("\n_________")
+        print("|       |")
+        print("|       0")
+        print("|     / | \ ")
+        print("|")
+        print("|")
+        print("|")
+    elif bad_points == 5:
+        print("\n_________")
+        print("|       |")
+        print("|       0")
+        print("|     / | \ ")
+        print("|        \ ")
+        print("|")
+        print("|")
+    else:
+        print("\nGAME OVER!!!")
+        print("_________")
+        print("|       |")
+        print("|       0")
+        print("|     / | \ ")
+        print("|      / \ ")
+        print("|")
+        print("|")
+        print("you lost!!")
+        print("the word was: ", end='')
+        print("GAME IS OVER!!!!")
+        for m in range(len(word)):
+            print(word[m], end='')
     if bad_points > 5:
         break
-
     if '_' in guess:
         print()
     else:
